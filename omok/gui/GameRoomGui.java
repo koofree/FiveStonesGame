@@ -278,7 +278,7 @@ public class GameRoomGui extends JPanel implements RoomGuiInter {
 	 * Canvas __ GameBoard!
 	 */
 
-	class GameBoardCanvas extends Canvas {
+	public class GameBoardCanvas extends Canvas {
 
 		/*
 		 * Image Size is 590,593
@@ -343,7 +343,7 @@ public class GameRoomGui extends JPanel implements RoomGuiInter {
 		}
 		
 		// Version 1.01 update
-		protected boolean isStoneDraw(int[] points) {
+		public boolean isStoneDraw(int[] points) {
 
 			for (StoneHistory temp : historyOfStone) {
 				if(temp.points[0] == points[0] && temp.points[1] == points[1])
