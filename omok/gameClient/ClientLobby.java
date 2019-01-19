@@ -51,7 +51,10 @@ public class ClientLobby implements ClientInterface {
     private boolean isRoomKing;
     private boolean isLogin = false;
 
+    protected String playerId;
+
     public ClientLobby(String id) {
+        this.playerId = id;
 //		this.serverIP = JOptionPane.showInputDialog("SERVER IP 를 입력하세요");
 
         m_Frame = new MainFrame(this);
@@ -143,6 +146,16 @@ public class ClientLobby implements ClientInterface {
 
             case ChatData.MESSAGE:
                 setTextToLog(data);
+                break;
+
+            case ChatData.WRONG_ORDER:
+                setTextToLog(data);
+                try {
+                    doAfterWork();
+                } catch (Exception e) {
+                    JOptionPane.showConfirmDialog(null, "게임이 끝났습니다!", "Notice!",
+                            JOptionPane.DEFAULT_OPTION);
+                }
                 break;
 
             case ChatData.MESSAGE_SLIP:
@@ -314,7 +327,12 @@ public class ClientLobby implements ClientInterface {
                  * send stone location..
                  */
                 m_gameRoom.drawStone(data.getStoneLocation(), data.isBlack());
-                doAfterWork();
+                try {
+                    doAfterWork();
+                } catch (Exception e) {
+                    JOptionPane.showConfirmDialog(null, "게임이 끝났습니다!", "Notice!",
+                            JOptionPane.DEFAULT_OPTION);
+                }
                 break;
 
             case GameData.SEND_RESULT:
@@ -376,7 +394,7 @@ public class ClientLobby implements ClientInterface {
 
     }
 
-    protected void doAfterWork() {
+    protected void doAfterWork() throws Exception {
         // Use for extended class
     }
 
@@ -545,7 +563,6 @@ public class ClientLobby implements ClientInterface {
     public boolean isRoomKing() {
         return isRoomKing;
     }
-
 
     public void setRoomKing(boolean isRoomKing) {
         this.isRoomKing = isRoomKing;

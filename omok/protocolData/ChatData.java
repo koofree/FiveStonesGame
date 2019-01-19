@@ -11,8 +11,9 @@ public class ChatData implements Protocol {
 	public static final short EXIT = 3000;
 	public static final short SEND_USER_LIST = 4000;
 	public static final short SEND_TOTAL_USER = 4100;
-	
-	private static final long serialVersionUID = 1L;
+    public static final short WRONG_ORDER = 4200;
+
+    private static final long serialVersionUID = 1L;
 
 	private String name = null,
 						   message = null;

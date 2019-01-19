@@ -492,10 +492,10 @@ public class GameServer extends Thread {
 				LogFrame.print("============= no TURN!!!  =============");
 				if (getUserLocation() == ServerInterface.IN_GAME_ROOMKING)
 					room.sendTo(ServerInterface.IN_GAME_ROOMKING, new ChatData(
-							"알림", "상대방 차례입니다.", ChatData.MESSAGE));
+							"알림", "상대방 차례입니다.", ChatData.WRONG_ORDER));
 				else
 					room.sendTo(ServerInterface.IN_GAME_CRHARANGER, new ChatData(
-							"알림", "상대방 차례입니다.", ChatData.MESSAGE));
+							"알림", "상대방 차례입니다.", ChatData.WRONG_ORDER));
 			}
 
 			break;
@@ -536,10 +536,10 @@ public class GameServer extends Thread {
 				System.out.println("무르기 안됨 ㅋㅋㅋ");
 				if (getUserLocation() == ServerInterface.IN_GAME_ROOMKING)
 					room.sendTo(ServerInterface.IN_GAME_ROOMKING, new ChatData(
-						"알림", "상대방 차례입니다.", ChatData.MESSAGE));
+						"알림", "상대방 차례입니다.", ChatData.WRONG_ORDER));
 				else
 					room.sendTo(ServerInterface.IN_GAME_CRHARANGER, new ChatData(
-						"알림", "상대방 차례입니다.", ChatData.MESSAGE));
+						"알림", "상대방 차례입니다.", ChatData.WRONG_ORDER));
 			}
 
 			break;
